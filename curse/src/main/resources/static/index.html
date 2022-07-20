@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gugol</title>
+    <link rel="icon" href="img/logo_google.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="img/logo_google.png" alt="Logo" width="400">
+        <input type="text" placeholder="Search Google" id="txtSearch">
+        <div class="container__buttons">
+            <button class="search" onclick="search()">Search</button>
+            <button>I´m Felling lucky</button>
+        </div>
+    </div>
+    <script>
+        function search(){
+            let textSearch=document.getElementById('txtSearch').value;
+            window.location.href='results.html?query='+textSearch;
+        }
+    </script>
+</body>
+</html>

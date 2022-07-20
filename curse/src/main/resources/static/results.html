@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gugol</title>
+    <link rel="icon" href="./img/logo_google.png" />
+    <link rel="stylesheet" href="./results.css" />
+  </head>
+  <body>
+    <div class="container__header">
+      <img src="./img/logo_google.png" alt="Logo" width="100" />
+      <input type="text" placeholder="Search Google" id="txtSearch"/>
+    </div>
+    <hr />
+    <div id="results">
+      <p>Cerca de 8.450.000.000 resultados (0,54 segundos)</p>
+
+    </div>
+    <script>
+      let aux=document.location.href.split('?query=');
+      let query=aux[1];
+
+      document.getElementById('txtSearch').value=query;
+      const results=document.getElementById('results');
+
+      async function getData(){
+        const response= await fetch("http://localhost:8080/api/search?query="+query);
+        const resultados=await response.json();
+        console.log(resultados);
+
+        resultados.forEach(result=>{
+          results.innerHTML+=`
+            <div class="result">
+                <h3><a href="${result.url}" target="_blank">${result.title}</a></h3>
+                <p>${result.description}</p>
+            </div>
+          `;
+        })
+      }    
+      getData();
+    </script>
+  </body>
+</html>
